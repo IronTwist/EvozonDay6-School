@@ -8,8 +8,6 @@ use School\Dto\RegisterUserDto;
 
 class DateValidator implements ValidatorInterface
 {
-    public string $name = 'DateValidator';
-
     public function validate(RegisterUserDto $dto): bool
     {
         $config = include 'config/config.php';

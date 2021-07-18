@@ -8,7 +8,6 @@ use School\Dto\RegisterUserDto;
 
 class ConfirmPassword implements ValidatorInterface
 {
-    public string $name = 'ConfirmPassword';
 
     public function validate(RegisterUserDto $dto): bool
     {

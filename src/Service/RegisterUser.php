@@ -43,7 +43,8 @@ class RegisterUser
         $this->validators->addValidator(new DateValidator());
 
         foreach ($this->validators as $validator){
-           $this->validationsPassed[$validator->name] = $validator->validate($dto);
+            $validatorName = substr(get_class($validator), 17);
+           $this->validationsPassed[$validatorName] = $validator->validate($dto);
         }
 
         foreach ($this->validationsPassed as $key => $validation){

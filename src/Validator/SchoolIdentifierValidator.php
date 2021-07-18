@@ -8,8 +8,6 @@ use School\Dto\RegisterUserDto;
 
 class SchoolIdentifierValidator implements ValidatorInterface
 {
-    public string $name = 'SchoolIdentifierValidator';
-
     public function validate(RegisterUserDto $dto): bool
     {
         if($dto->isTeacher) {

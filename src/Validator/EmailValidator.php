@@ -7,8 +7,6 @@ use School\Dto\RegisterUserDto;
 
 class EmailValidator implements ValidatorInterface
 {
-    public string $name = 'EmailValidator';
-
     public function validate(RegisterUserDto $dto): bool
     {
         $config = include 'config/config.php';

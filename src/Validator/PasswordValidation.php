@@ -8,8 +8,6 @@ use School\Dto\RegisterUserDto;
 
 class PasswordValidation implements ValidatorInterface
 {
-    public string $name = 'PasswordValidation';
-
     public function validate(RegisterUserDto $dto): bool
     {
         $config = include 'config/config.php';

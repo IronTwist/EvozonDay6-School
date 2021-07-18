@@ -2,12 +2,12 @@
 
 namespace School\Service;
 
-use School\Validator\ConfirmPassword;
+use School\Validator\ConfirmPasswordValidator;
 use School\Validator\DateValidator;
 use School\Validator\EmailValidator;
 use School\Validator\FirstNameValidator;
 use School\Validator\LastNameValidator;
-use School\Validator\PasswordValidation;
+use School\Validator\PasswordValidator;
 use School\Validator\SchoolIdentifierValidator;
 use School\Validator\ValidatorCollection;
 use School\Dto\RegisterUserDto;
@@ -36,18 +36,18 @@ class RegisterUser
 
         $this->validators->addValidator(new FirstNameValidator());
         $this->validators->addValidator(new LastNameValidator());
-        $this->validators->addValidator(new PasswordValidation());
-        $this->validators->addValidator(new ConfirmPassword());
+        $this->validators->addValidator(new PasswordValidator());
+        $this->validators->addValidator(new ConfirmPasswordValidator());
         $this->validators->addValidator(new SchoolIdentifierValidator());
         $this->validators->addValidator(new EmailValidator());
         $this->validators->addValidator(new DateValidator());
 
         foreach ($this->validators as $validator){
             $validatorName = substr(get_class($validator), 17);
-           $this->validationsPassed[$validatorName] = $validator->validate($dto);
+            $this->validationsPassed[$validatorName] = $validator->validate($dto);
         }
 
-        foreach ($this->validationsPassed as $key => $validation){
+        foreach ($this->validationsPassed as $validation){
             //Check if all validations passed
             if($validation === false){
                 $validationPassed = false;
